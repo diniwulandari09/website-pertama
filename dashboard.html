@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - 11 RPL 1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html"><h1>11 RPL 1</h1></a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html#home" class="nav-link">Beranda</a>
+                <a href="index.html#gallery" class="nav-link">Gallery</a>
+                <a href="index.html#students" class="nav-link">Siswa</a>
+                <a href="index.html#random" class="nav-link">Random</a>
+            </div>
+
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="theme-toggle" title="Ganti tema">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <!-- SIDEBAR -->
+            <aside class="dashboard-sidebar">
+                <div class="sidebar-profile">
+                    <img id="sidebar-avatar" src="" alt="Avatar" class="sidebar-avatar">
+                    <div class="sidebar-info">
+                        <h3 id="sidebar-name">Loading...</h3>
+                        <p id="sidebar-class">11 RPL 1</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#dashboard-home" class="sidebar-link active">
+                        📊 Dashboard
+                    </a>
+                    <a href="#dashboard-profile" class="sidebar-link">
+                        👤 My Profile
+                    </a>
+                    <a href="#dashboard-edit" class="sidebar-link">
+                        ✏️ Edit Profile
+                    </a>
+                    <a href="#dashboard-gallery" class="sidebar-link">
+                        🖼️ My Gallery
+                    </a>
+                    <a href="#dashboard-upload" class="sidebar-link">
+                        📤 Upload Foto
+                    </a>
+                </nav>
+
+                <button id="logout-btn" class="btn btn-secondary btn-full">
+                    Logout
+                </button>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="dashboard-main">
+                <!-- DASHBOARD HOME -->
+                <div class="dashboard-view" id="dashboard-home">
+                    <div class="dashboard-header">
+                        <h2>Welcome, <span id="welcome-name">User</span>!</h2>
+                        <p>Selamat datang di dashboard pribadi Anda</p>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card">
+                            <h3>👤 Profil Anda</h3>
+                            <div class="card-content">
+                                <p><strong>Nama:</strong> <span id="dashboard-name">-</span></p>
+                                <p><strong>Nomor Absen:</strong> <span id="dashboard-attendance">-</span></p>
+                                <p><strong>Email:</strong> <span id="dashboard-email">-</span></p>
+                                <a href="#dashboard-edit" class="btn btn-primary btn-sm">Edit Profil</a>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>🖼️ Gallery Saya</h3>
+                            <div class="card-content">
+                                <p id="dashboard-photo-count">Loading...</p>
+                                <a href="#dashboard-gallery" class="btn btn-primary btn-sm">Lihat Gallery</a>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>📤 Upload Foto</h3>
+                            <div class="card-content">
+                                <p>Bagikan momen spesial Anda dengan kelas</p>
+                                <a href="#dashboard-upload" class="btn btn-primary btn-sm">Upload</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MY PROFILE -->
+                <div class="dashboard-view" id="dashboard-profile" style="display: none;">
+                    <div class="dashboard-header">
+                        <h2>Profil Saya</h2>
+                    </div>
+
+                    <div class="profile-card">
+                        <img id="profile-avatar-large" src="" alt="Avatar" class="profile-avatar-large">
+                        <div class="profile-info">
+                            <h3 id="profile-name">Loading...</h3>
+                            <p class="profile-meta" id="profile-attendance">Absen: -</p>
+                            <p class="profile-meta" id="profile-email">Email: -</p>
+                            <div class="profile-bio">
+                                <h4>Bio</h4>
+                                <p id="profile-bio">Belum ada bio</p>
+                            </div>
+                            <div class="profile-quote">
+                                <h4>Quote</h4>
+                                <p id="profile-quote">Belum ada quote</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDIT PROFILE -->
+                <div class="dashboard-view" id="dashboard-edit" style="display: none;">
+                    <div class="dashboard-header">
+                        <h2>Edit Profil</h2>
+                    </div>
+
+                    <form id="edit-profile-form" class="profile-form">
+                        <div class="form-group">
+                            <label for="edit-name">Nama Lengkap</label>
+                            <input 
+                                type="text" 
+                                id="edit-name" 
+                                name="name" 
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-bio">Bio</label>
+                            <textarea 
+                                id="edit-bio" 
+                                name="bio" 
+                                rows="4"
+                                placeholder="Tulis bio Anda"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-quote">Quote Favorit</label>
+                            <input 
+                                type="text" 
+                                id="edit-quote" 
+                                name="quote" 
+                                placeholder="Tulis quote Anda"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="edit-avatar">Foto Profil</label>
+                            <input 
+                                type="file" 
+                                id="edit-avatar" 
+                                name="avatar" 
+                                accept="image/*"
+                            >
+                            <small>JPG, JPEG, PNG, atau WebP (Max 5MB)</small>
+                            <img id="avatar-preview" src="" alt="Preview" class="avatar-preview" style="display: none;">
+                        </div>
+
+                        <div id="edit-error" class="form-error"></div>
+
+                        <button type="submit" class="btn btn-primary" id="edit-submit">
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
+
+                <!-- MY GALLERY -->
+                <div class="dashboard-view" id="dashboard-gallery" style="display: none;">
+                    <div class="dashboard-header">
+                        <h2>Gallery Saya</h2>
+                        <p>Foto yang telah saya unggah</p>
+                    </div>
+
+                    <div class="my-gallery-grid" id="my-gallery-grid">
+                        <!-- Filled by JavaScript -->
+                    </div>
+
+                    <div class="gallery-empty" id="my-gallery-empty">
+                        <p>Anda belum mengunggah foto.</p>
+                        <a href="#dashboard-upload" class="btn btn-primary">Upload Foto</a>
+                    </div>
+                </div>
+
+                <!-- UPLOAD FOTO -->
+                <div class="dashboard-view" id="dashboard-upload" style="display: none;">
+                    <div class="dashboard-header">
+                        <h2>Upload Foto</h2>
+                        <p>Bagikan momen spesial Anda dengan kelas</p>
+                    </div>
+
+                    <form id="upload-form" class="upload-form">
+                        <div class="form-group">
+                            <label for="upload-image">Pilih Foto</label>
+                            <div class="file-input-wrapper">
+                                <input 
+                                    type="file" 
+                                    id="upload-image" 
+                                    name="image" 
+                                    accept="image/*"
+                                    required
+                                >
+                                <span class="file-input-label">Klik untuk memilih foto</span>
+                            </div>
+                            <small>JPG, JPEG, PNG, atau WebP (Max 10MB)</small>
+                            <img id="upload-preview" src="" alt="Preview" class="upload-preview" style="display: none;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upload-caption">Caption</label>
+                            <textarea 
+                                id="upload-caption" 
+                                name="caption" 
+                                rows="3"
+                                placeholder="Tulis caption untuk foto Anda"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upload-category">Kategori</label>
+                            <select id="upload-category" name="category" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="activity">Activity</option>
+                                <option value="event">Event</option>
+                                <option value="together">Together</option>
+                                <option value="random">Random</option>
+                            </select>
+                        </div>
+
+                        <div id="upload-error" class="form-error"></div>
+                        <div id="upload-success" class="form-success" style="display: none;"></div>
+
+                        <button type="submit" class="btn btn-primary" id="upload-submit">
+                            Upload Foto
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- MODAL UNTUK HAPUS FOTO -->
+    <div class="modal" id="delete-photo-modal">
+        <div class="modal-content modal-sm">
+            <h3>Hapus Foto?</h3>
+            <p>Apakah Anda yakin ingin menghapus foto ini? Tindakan ini tidak dapat dibatalkan.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="delete-cancel">Batal</button>
+                <button class="btn btn-danger" id="delete-confirm">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>11 RPL 1</h4>
+                <p>Built with memories, friendship & code.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 11 RPL 1. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/supabase.js"></script>
+    <script src="js/students.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

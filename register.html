@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - 11 RPL 1</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html"><h1>11 RPL 1</h1></a>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html#home" class="nav-link">Beranda</a>
+                <a href="index.html#gallery" class="nav-link">Gallery</a>
+                <a href="index.html#students" class="nav-link">Siswa</a>
+                <a href="index.html#random" class="nav-link">Random</a>
+            </div>
+
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="theme-toggle" title="Ganti tema">
+                    🌙
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REGISTER SECTION -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Register</h2>
+                    <p>Bergabunglah dengan 11 RPL 1</p>
+                </div>
+
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Nama Lengkap</label>
+                        <input 
+                            type="text" 
+                            id="register-name" 
+                            name="name" 
+                            required 
+                            placeholder="Masukkan nama Anda"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-attendance">Nomor Absen</label>
+                        <select 
+                            id="register-attendance" 
+                            name="attendance" 
+                            required
+                        >
+                            <option value="">Pilih nomor absen</option>
+                        </select>
+                        <small id="attendance-error" class="form-error" style="display: none;"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="register-email" 
+                            name="email" 
+                            required 
+                            placeholder="Masukkan email Anda"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="register-password" 
+                                name="password" 
+                                required 
+                                placeholder="Minimal 6 karakter"
+                            >
+                            <button type="button" class="password-toggle" id="register-password-toggle">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">Konfirmasi Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="register-confirm-password" 
+                                name="confirm_password" 
+                                required 
+                                placeholder="Ulangi password"
+                            >
+                            <button type="button" class="password-toggle" id="register-confirm-password-toggle">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="register-error" class="form-error"></div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="register-submit">
+                        Register
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+                </div>
+            </div>
+
+            <div class="auth-decoration">
+                <div class="decoration-grid"></div>
+                <div class="decoration-particles" id="auth-particles"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>11 RPL 1</h4>
+                <p>Built with memories, friendship & code.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 11 RPL 1. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/supabase.js"></script>
+    <script src="js/students.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

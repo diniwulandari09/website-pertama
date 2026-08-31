@@ -1,0 +1,58 @@
+# ============================================
+# .gitignore - 11 RPL 1
+# ============================================
+
+# Supabase Configuration (NEVER commit these)
+js/supabase.js.local
+.env
+.env.local
+.env*.local
+.env.*.local
+
+# Private Keys
+**/private-key.json
+**/secret*.key
+**/credentials*.json
+
+# Environment Variables
+config.local.js
+config.development.js
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node Dependencies (if using Node build tools)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build Output
+dist/
+build/
+*.min.js
+*.min.css
+
+# Temporary Files
+*.tmp
+*.temp
+.cache/
+
+# OS
+.DS_Store
+.env.local
+thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+package-lock.json
+yarn.lock

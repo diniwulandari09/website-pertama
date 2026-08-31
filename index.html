@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 RPL 1 - Code. Create. Collaborate.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <h1>11 RPL 1</h1>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#students" class="nav-link">Siswa</a>
+                <a href="#random" class="nav-link">Random</a>
+            </div>
+
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="theme-toggle" title="Ganti tema">
+                    🌙
+                </button>
+                <a href="login.html" class="nav-button" id="nav-button">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-particles" id="particles"></div>
+            <div class="hero-grid"></div>
+            
+            <div class="hero-text">
+                <h2 class="hero-title">11 RPL 1</h2>
+                <p class="hero-tagline">Code. Create. Collaborate.</p>
+                <p class="hero-subtitle">Welcome to our digital classroom.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#students" class="btn btn-primary">Explore Our Class</a>
+                    <a href="#gallery" class="btn btn-secondary">Meet The Students</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATISTICS -->
+    <section class="statistics">
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>37</h3>
+                <p>Students</p>
+            </div>
+            <div class="stat-card">
+                <h3>11 RPL 1</h3>
+                <p>Class</p>
+            </div>
+            <div class="stat-card">
+                <h3>RPL</h3>
+                <p>Major</p>
+            </div>
+            <div class="stat-card">
+                <h3>2026</h3>
+                <p>School Year</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASS INTRO -->
+    <section class="class-intro">
+        <div class="container">
+            <h2>More Than Just A Class</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>11 RPL 1 bukan hanya tempat belajar coding. Di sini kami belajar, bekerja sama, bercanda, menciptakan sesuatu, dan membuat kenangan bersama.</p>
+                </div>
+                <div class="intro-cards">
+                    <div class="intro-card">
+                        <h4>💻 Belajar</h4>
+                        <p>Menguasai teknologi terkini</p>
+                    </div>
+                    <div class="intro-card">
+                        <h4>🤝 Kolaborasi</h4>
+                        <p>Bekerja sama sebagai tim</p>
+                    </div>
+                    <div class="intro-card">
+                        <h4>🚀 Inovasi</h4>
+                        <p>Menciptakan solusi kreatif</p>
+                    </div>
+                    <div class="intro-card">
+                        <h4>✨ Kenangan</h4>
+                        <p>Membuat momen berharga</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDENT DIRECTORY -->
+    <section class="students" id="students">
+        <div class="container">
+            <h2>Meet The Students</h2>
+            
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Cari nama atau nomor absen..."
+                    class="search-input"
+                >
+            </div>
+
+            <div class="students-grid" id="students-grid">
+                <!-- Filled by JavaScript -->
+            </div>
+
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <p>Tidak ada siswa yang ditemukan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STUDENT PROFILE MODAL -->
+    <div class="modal" id="student-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="student-profile" id="student-profile">
+                <!-- Filled by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Our Memories</h2>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="activity">ACTIVITY</button>
+                <button class="filter-btn" data-filter="event">EVENT</button>
+                <button class="filter-btn" data-filter="together">TOGETHER</button>
+                <button class="filter-btn" data-filter="random">RANDOM</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Filled by JavaScript -->
+            </div>
+
+            <div class="gallery-empty" id="gallery-empty">
+                <p>Belum ada kenangan yang ditambahkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&lsaquo;</button>
+        <button class="lightbox-next">&rsaquo;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <p class="lightbox-caption" id="lightbox-caption"></p>
+                <p class="lightbox-uploader" id="lightbox-uploader"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RANDOM ZONE -->
+    <section class="random-zone" id="random">
+        <div class="container">
+            <h2>Random Zone</h2>
+            
+            <div class="random-grid">
+                <!-- RANDOM STUDENT -->
+                <div class="random-card random-student-card">
+                    <h3>🎲 Random Student</h3>
+                    <div class="random-student-display" id="random-student-display">
+                        <p>Klik tombol di bawah untuk mulai</p>
+                    </div>
+                    <button class="btn btn-primary" id="random-student-btn">
+                        Pick A Student
+                    </button>
+                </div>
+
+                <!-- RANDOM QUOTE -->
+                <div class="random-card random-quote-card">
+                    <h3>💭 Random Quote</h3>
+                    <div class="random-quote-display" id="random-quote-display">
+                        <p class="quote-text">Klik untuk mendapatkan quote acak</p>
+                    </div>
+                    <button class="btn btn-primary" id="random-quote-btn">
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- RANDOM FACT -->
+                <div class="random-card random-fact-card">
+                    <h3>📊 Random Fact</h3>
+                    <div class="random-fact-display" id="random-fact-display">
+                        <p class="fact-text">Klik untuk mendapatkan fakta acak</p>
+                    </div>
+                    <button class="btn btn-primary" id="random-fact-btn">
+                        Get Fact
+                    </button>
+                </div>
+
+                <!-- RANDOM CHALLENGE -->
+                <div class="random-card random-challenge-card">
+                    <h3>⚡ Random Challenge</h3>
+                    <div class="random-challenge-display" id="random-challenge-display">
+                        <p class="challenge-text">Klik untuk mendapatkan tantangan</p>
+                    </div>
+                    <button class="btn btn-primary" id="random-challenge-btn">
+                        Get Challenge
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE CLASS MOMENT -->
+    <section class="live-moment">
+        <div class="container">
+            <h2>Right Now</h2>
+            <div class="moment-card">
+                <div class="moment-clock">
+                    <div class="clock-time" id="clock-time">00:00:00</div>
+                    <div class="clock-date" id="clock-date">--</div>
+                </div>
+                <div class="moment-quote">
+                    <p id="moment-quote-text">Quote akan dimuat...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline">
+        <div class="container">
+            <h2>Our Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>2026</h3>
+                        <p>First Chapter</p>
+                        <span class="timeline-date">Awal perjalanan 11 RPL 1</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>2026</h3>
+                        <p>New Memories</p>
+                        <span class="timeline-date">Membuat kenangan bersama</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>2027</h3>
+                        <p>Next Chapter</p>
+                        <span class="timeline-date">Melangkah ke masa depan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>11 RPL 1</h4>
+                <p>Built with memories, friendship & code.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Beranda</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#students">Siswa</a>
+                <a href="#random">Random</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 11 RPL 1. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/supabase.js"></script>
+    <script src="js/students.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
